@@ -146,12 +146,16 @@ namespace custom_types {
 	}
 
 	std::vector<Il2CppClass*> collect_parent_ifs(std::vector<Il2CppClass*> intfs) {
+		// we create a new collection because we can't insert into the same one
+		// create it with the input in there at all times so we don't skip any
+		std::vector<Il2CppClass*> ifs(intfs.begin(), intfs.end());
+
 		for (auto intf : intfs) {
 			auto implemented = collect_parent_ifs(intf);
-            intfs.insert(intfs.begin(), implemented.begin(), implemented.end());
-        }
+			ifs.insert(ifs.begin(), implemented.begin(), implemented.end());
+		}
 
-        return intfs;
+		return ifs;
     }
 
 	void TypeRegistration::createClass() {
