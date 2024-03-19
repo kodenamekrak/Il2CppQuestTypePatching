@@ -233,15 +233,15 @@ namespace custom_types {
 			}
 		}
 
-        std::string fullName = (std::stringstream() << namespaze() << "::" << name()).str();
+        std::string fullName = fmt::format("{}::{}", namespaze() ? namespaze() : "", name());
 
-        custom_types::logger.debug("Interface count {}: {}", fullName.c_str(), intfs.size());
-        custom_types::logger.debug("All interface count {}: {}", fullName.c_str(), all_intfs.size());
+        logger.debug("Interface count {}: {}", fullName, intfs.size());
+        logger.debug("All interface count {}: {}", fullName, all_intfs.size());
 
         // k->implementedInterfaces needs to be allocated as well
 		k->implementedInterfaces = reinterpret_cast<Il2CppClass**>(calloc(all_intfs.size(), sizeof(Il2CppClass*)));
         for (size_t i = 0; i < all_intfs.size(); i++) {
-            custom_types::logger.debug("Implementing for {}: {}", fullName.c_str(), il2cpp_utils::ClassStandardName(all_intfs[i], true).c_str());
+            custom_types::logger.debug("Implementing for {}: {}", fullName, il2cpp_utils::ClassStandardName(all_intfs[i], true));
 
             k->implementedInterfaces[i] = all_intfs[i];
 		}
