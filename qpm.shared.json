@@ -33,7 +33,7 @@
     "dependencies": [
       {
         "id": "beatsaber-hook",
-        "versionRange": "^5.1.2",
+        "versionRange": "^5.1.5",
         "additionalData": {}
       },
       {
@@ -54,13 +54,13 @@
     {
       "dependency": {
         "id": "paper",
-        "versionRange": "=3.6.1",
+        "versionRange": "=3.6.3",
         "additionalData": {
-          "soLink": "https://github.com/Fernthedev/paperlog/releases/download/v3.6.1/libpaperlog.so",
-          "debugSoLink": "https://github.com/Fernthedev/paperlog/releases/download/v3.6.1/debug_libpaperlog.so",
+          "soLink": "https://github.com/Fernthedev/paperlog/releases/download/v3.6.3/libpaperlog.so",
+          "debugSoLink": "https://github.com/Fernthedev/paperlog/releases/download/v3.6.3/debug_libpaperlog.so",
           "overrideSoName": "libpaperlog.so",
-          "modLink": "https://github.com/Fernthedev/paperlog/releases/download/v3.6.1/paperlog.qmod",
-          "branchName": "version/v3_6_1",
+          "modLink": "https://github.com/Fernthedev/paperlog/releases/download/v3.6.3/paperlog.qmod",
+          "branchName": "version/v3_6_3",
           "compileOptions": {
             "systemIncludes": [
               "shared/utfcpp/source"
@@ -69,7 +69,7 @@
           "cmake": false
         }
       },
-      "version": "3.6.1"
+      "version": "3.6.3"
     },
     {
       "dependency": {
@@ -84,15 +84,28 @@
     {
       "dependency": {
         "id": "beatsaber-hook",
-        "versionRange": "=5.1.2",
+        "versionRange": "=5.1.5",
         "additionalData": {
-          "soLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v5.1.2/libbeatsaber-hook_5_1_2.so",
-          "debugSoLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v5.1.2/debug_libbeatsaber-hook_5_1_2.so",
-          "branchName": "version/v5_1_2",
+          "soLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v5.1.5/libbeatsaber-hook_5_1_5.so",
+          "debugSoLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v5.1.5/debug_libbeatsaber-hook_5_1_5.so",
+          "branchName": "version/v5_1_5",
           "cmake": true
         }
       },
-      "version": "5.1.2"
+      "version": "5.1.5"
+    },
+    {
+      "dependency": {
+        "id": "scotland2",
+        "versionRange": "=0.1.4",
+        "additionalData": {
+          "soLink": "https://github.com/sc2ad/scotland2/releases/download/v0.1.4/libsl2.so",
+          "debugSoLink": "https://github.com/sc2ad/scotland2/releases/download/v0.1.4/debug_libsl2.so",
+          "overrideSoName": "libsl2.so",
+          "branchName": "version/v0_1_4"
+        }
+      },
+      "version": "0.1.4"
     },
     {
       "dependency": {
@@ -112,19 +125,6 @@
         }
       },
       "version": "10.0.0"
-    },
-    {
-      "dependency": {
-        "id": "scotland2",
-        "versionRange": "=0.1.4",
-        "additionalData": {
-          "soLink": "https://github.com/sc2ad/scotland2/releases/download/v0.1.4/libsl2.so",
-          "debugSoLink": "https://github.com/sc2ad/scotland2/releases/download/v0.1.4/debug_libsl2.so",
-          "overrideSoName": "libsl2.so",
-          "branchName": "version/v0_1_4"
-        }
-      },
-      "version": "0.1.4"
     },
     {
       "dependency": {
