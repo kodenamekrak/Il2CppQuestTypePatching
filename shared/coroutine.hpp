@@ -66,7 +66,14 @@ template<>
 struct ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<custom_types::Helpers::Coroutine*> {
     static inline Il2CppClass* get() {
         il2cpp_functions::Init();
-        return il2cpp_functions::Class_GetPtrClass(il2cpp_functions::defaults->void_class);
+        return classof(void*);
+    }
+};
+template <>
+struct ::il2cpp_utils::il2cpp_type_check::il2cpp_arg_class<custom_types::Helpers::Coroutine*> {
+    static inline Il2CppClass* get(custom_types::Helpers::Coroutine*) {
+        il2cpp_functions::Init();
+        return classof(void*);
     }
 };
 // CoroFuncType* mapped to void*
@@ -74,7 +81,14 @@ template<>
 struct ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<custom_types::Helpers::CoroFuncType*> {
     static inline Il2CppClass* get() {
         il2cpp_functions::Init();
-        return il2cpp_functions::Class_GetPtrClass(il2cpp_functions::defaults->void_class);
+        return classof(void*);
+    }
+};
+template <>
+struct ::il2cpp_utils::il2cpp_type_check::il2cpp_arg_class<custom_types::Helpers::CoroFuncType*> {
+    static inline Il2CppClass* get(custom_types::Helpers::CoroFuncType*) {
+        il2cpp_functions::Init();
+        return classof(void*);
     }
 };
 MARK_REF_PTR_T(custom_types::Helpers::CoroFuncType);
