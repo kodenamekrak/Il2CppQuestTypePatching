@@ -200,6 +200,8 @@ namespace custom_types {
 		k->name = name();
 		k->namespaze = namespaze();
 		k->this_arg = *type;
+		// byref for this_arg should be true (see libil2cpp Class::GetPtrClass & Class::FromTypeDefinition )
+		k->this_arg.byref = true;
 		// TODO: Modify this for future usage where byval argument may not match this argument
 		k->byval_arg = *type;
 		// TODO: Allow for changing flags in the future (avoid copying base flags)
