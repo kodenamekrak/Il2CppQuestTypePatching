@@ -115,6 +115,33 @@ MAKE_HOOK(Class_Init, nullptr, bool, Il2CppClass* klass) {
     return Class_Init(klass);
 }
 
+// TODO: bitwise maybe
+union CastHelper {
+    TypeDefinitionIndex index;
+    Il2CppMetadataTypeHandle handle;
+};
+
+MAKE_HOOK(GlobalMetadata_GetTypeInfoFromHandle, nullptr, Il2CppClass*, Il2CppMetadataTypeHandle handle) {
+    if ((bool) ((uint64_t) handle >> 32)) {
+        return GlobalMetadata_GetTypeInfoFromHandle(handle);
+    }
+    CastHelper caster;
+    caster.handle = handle;
+    auto index = caster.index;
+    if (index < 0) {
+        // index is either invalid or one of ours
+        size_t idx = kTypeDefinitionIndexInvalid - index;
+        custom_types::logger.debug("custom idx: {}", idx);
+        if (idx < ::custom_types::Register::classes.size() && idx >= 0) {
+            custom_types::logger.debug("Returning custom class with idx {}!", idx);
+            auto* k = ::custom_types::Register::classes[idx];
+            return k;
+        }
+    }
+    custom_types::logger.warn("Calling orig with likely broken type handle!");
+    return GlobalMetadata_GetTypeInfoFromHandle(handle);
+}
+
 MAKE_HOOK(GlobalMetadata_GetTypeInfoFromTypeDefinitionIndex, nullptr, Il2CppClass*, TypeDefinitionIndex index) {
     if (index < 0) {
         // index is either invalid or one of ours
@@ -565,6 +592,7 @@ void Register::EnsureHooks() {
         } else {
             Hooking::InstallHookDirect<Hook_FromIl2CppTypeMain<Il2CppType*, bool>>(logger, (void*)il2cpp_functions::il2cpp_Class_FromIl2CppType);
         }
+        INSTALL_HOOK_DIRECT(logger, GlobalMetadata_GetTypeInfoFromHandle, (void*)il2cpp_functions::il2cpp_GlobalMetadata_GetTypeInfoFromHandle);
         INSTALL_HOOK_DIRECT(logger, GlobalMetadata_GetTypeInfoFromTypeDefinitionIndex, (void*)il2cpp_functions::il2cpp_GlobalMetadata_GetTypeInfoFromTypeDefinitionIndex);
         INSTALL_HOOK_DIRECT(logger, Class_Init, (void*)il2cpp_functions::il2cpp_Class_Init);
         uintptr_t GetScriptingClassAddr = findPattern(baseAddr("libunity.so"), "ff 43 02 d1 fa 23 00 f9 f9 63 05 a9 f7 5b 06 a9 f5 53 07 a9 f3 7b 08 a9 57 d0 3b d5 e8 16 40 f9 f6 03 01 aa");
