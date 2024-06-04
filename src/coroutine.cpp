@@ -10,7 +10,6 @@ struct InternalHelper {
   static bool MoveNextHelper(Coroutine *&currentCoro, Wrapper &current) {
     if (!currentCoro) {
       // If we do not have a current coroutine, we exit immediately.
-      custom_types::logger.debug("redundant MoveNext call!");
       return false;
     }
     // Each call to MoveNext performs the following:
@@ -30,7 +29,6 @@ struct InternalHelper {
     //     // Our current instance is complete, run ourselves now.
     //     current = nullptr;
     // }
-    custom_types::logger.debug("Coroutine resume instance IEnumerator {}", fmt::ptr(current.instance));
     // reset value, we have nothing
     current = nullptr;
     currentCoro->m_coroutine.resume();
@@ -52,7 +50,6 @@ struct InternalHelper {
     }
     // Otherwise, get the next current value
     current = currentCoro->m_coroutine.promise().value();
-    custom_types::logger.debug("Coroutine resume new value {}", fmt::ptr(current.instance));
     return true;
   }
 };
