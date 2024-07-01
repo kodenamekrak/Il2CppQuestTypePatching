@@ -29,9 +29,12 @@
           "pwsh ./createqmod.ps1 CustomTypes -clean"
         ]
       },
-      "qmodIncludeDirs": [],
+      "qmodIncludeDirs": [
+        "./extern/libs",
+        "./build"
+      ],
       "qmodIncludeFiles": [],
-      "qmodOutput": null
+      "qmodOutput": "CustomTypes.qmod"
     },
     "dependencies": [
       {
