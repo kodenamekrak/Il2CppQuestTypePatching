@@ -125,13 +125,13 @@ private:
             return nullptr;
         }
         const Il2CppType* returnType() const override {
-            return ::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<RI>::get());
+            return ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<RI>::get();
         }
         std::vector<const Il2CppType*> params() const override {
             il2cpp_functions::Init();
             return {
                 ::il2cpp_functions::class_get_type(___TypeRegistration::klass_ptr),
-                (il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<TArgsI>::get()))...
+                (::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<TArgsI>::get())...
             };
         }
         uint8_t params_size() const override {
@@ -337,13 +337,13 @@ private:
         }
         const Il2CppType* returnType() const override {
             ::il2cpp_functions::Init();
-            return ::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<RI>::get());
+            return ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<RI>::get();
         }
         std::vector<const Il2CppType*> params() const override {
             il2cpp_functions::Init();
             return {
                 ::il2cpp_functions::class_get_type(___TypeRegistration::klass_ptr),
-                (::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<TArgsI>::get()))...
+                (::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<TArgsI>::get())...
             };
         }
         uint8_t params_size() const override {
@@ -366,7 +366,7 @@ private:
         }
         const Il2CppType* type() const override {
             ::il2cpp_functions::Init();
-            return ::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<TI>::get());
+            return ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<TI>::get();
         }
         constexpr uint16_t fieldAttributes() const override {
             return FIELD_ATTRIBUTE_PUBLIC;

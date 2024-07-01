@@ -162,7 +162,7 @@ namespace custom_types {
             std::vector<const Il2CppType*> params;
             auto& info = params.emplace_back();
             il2cpp_functions::Init();
-            const Il2CppType* type = ::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<P>::get());
+            const Il2CppType* type = ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<P>::get();
             // Ignore name, it will be set when we iterate over all of them (param_1, param_2, etc.)
             // Ignore position, it will also be set on iteration.
             // TODO: Maybe some day we can actually use the parameters names themselves!

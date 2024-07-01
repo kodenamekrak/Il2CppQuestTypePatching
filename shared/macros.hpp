@@ -573,7 +573,7 @@ struct ___StaticFieldRegistrator_##name_ : ::custom_types::StaticFieldRegistrato
     } \
     const Il2CppType* type() const override { \
         ::il2cpp_functions::Init(); \
-        return ::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<type_>::get()); \
+        return ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<type_>::get(); \
     } \
     constexpr uint16_t fieldAttributes() const override { \
         return FIELD_ATTRIBUTE_PUBLIC | FIELD_ATTRIBUTE_STATIC; \
@@ -619,12 +619,12 @@ struct ___MethodRegistrator_##name_<R (T::*)(TArgs...)> : ::custom_types::Method
     } \
     const Il2CppType* returnType() const override { \
         il2cpp_functions::Init(); \
-        return ::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<R>::get()); \
+        return ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<R>::get(); \
     } \
     std::vector<const Il2CppType*> params() const override { \
         int32_t counter = 0; \
         il2cpp_functions::Init(); \
-        return {(::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<TArgs>::get()))...}; \
+        return {(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<TArgs>::get())...}; \
     } \
     uint8_t params_size() const override { \
         return sizeof...(TArgs); \
@@ -793,12 +793,12 @@ struct ___MethodRegistrator_##name_<R (*)(TArgs...)> : ::custom_types::MethodReg
     } \
     const Il2CppType* returnType() const override { \
         il2cpp_functions::Init(); \
-        return ::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<R>::get()); \
+        return ::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<R>::get(); \
     } \
     std::vector<const Il2CppType*> params() const override { \
         int32_t counter = 0; \
         il2cpp_functions::Init(); \
-        return {(::il2cpp_functions::class_get_type(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_class<TArgs>::get()))...}; \
+        return {(::::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<TArgs>::get())...}; \
     } \
     uint8_t params_size() const override { \
         return sizeof...(TArgs); \
