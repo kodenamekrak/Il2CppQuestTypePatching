@@ -91,28 +91,15 @@
     {
       "dependency": {
         "id": "beatsaber-hook",
-        "versionRange": "=5.1.8",
+        "versionRange": "=5.1.9",
         "additionalData": {
-          "soLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v5.1.8/libbeatsaber-hook_5_1_8.so",
-          "debugSoLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v5.1.8/debug_libbeatsaber-hook_5_1_8.so",
-          "branchName": "version/v5_1_8",
+          "soLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v5.1.9/libbeatsaber-hook_5_1_9.so",
+          "debugSoLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v5.1.9/debug_libbeatsaber-hook_5_1_9.so",
+          "branchName": "version/v5_1_9",
           "cmake": true
         }
       },
-      "version": "5.1.8"
-    },
-    {
-      "dependency": {
-        "id": "scotland2",
-        "versionRange": "=0.1.4",
-        "additionalData": {
-          "soLink": "https://github.com/sc2ad/scotland2/releases/download/v0.1.4/libsl2.so",
-          "debugSoLink": "https://github.com/sc2ad/scotland2/releases/download/v0.1.4/debug_libsl2.so",
-          "overrideSoName": "libsl2.so",
-          "branchName": "version/v0_1_4"
-        }
-      },
-      "version": "0.1.4"
+      "version": "5.1.9"
     },
     {
       "dependency": {
@@ -132,6 +119,19 @@
         }
       },
       "version": "10.0.0"
+    },
+    {
+      "dependency": {
+        "id": "scotland2",
+        "versionRange": "=0.1.4",
+        "additionalData": {
+          "soLink": "https://github.com/sc2ad/scotland2/releases/download/v0.1.4/libsl2.so",
+          "debugSoLink": "https://github.com/sc2ad/scotland2/releases/download/v0.1.4/debug_libsl2.so",
+          "overrideSoName": "libsl2.so",
+          "branchName": "version/v0_1_4"
+        }
+      },
+      "version": "0.1.4"
     },
     {
       "dependency": {
