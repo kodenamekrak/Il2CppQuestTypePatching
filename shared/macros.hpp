@@ -798,7 +798,7 @@ struct ___MethodRegistrator_##name_<R (*)(TArgs...)> : ::custom_types::MethodReg
     std::vector<const Il2CppType*> params() const override { \
         int32_t counter = 0; \
         il2cpp_functions::Init(); \
-        return {(::::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<TArgs>::get())...}; \
+        return {(::il2cpp_utils::il2cpp_type_check::il2cpp_no_arg_type<TArgs>::get())...}; \
     } \
     uint8_t params_size() const override { \
         return sizeof...(TArgs); \
