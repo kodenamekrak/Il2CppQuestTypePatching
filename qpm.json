@@ -19,9 +19,8 @@
   },
   "workspace": {
     "scripts": {
-      "build": [
-        "pwsh ./build.ps1"
-      ],
+      "build": ["pwsh ./build.ps1"],
+      "test": ["pwsh ./build.ps1 -local_test"],
       "qmod": [
         "pwsh ./build.ps1 -clean",
         "qpm qmod manifest",

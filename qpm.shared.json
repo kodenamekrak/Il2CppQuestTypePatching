@@ -27,6 +27,9 @@
           "pwsh ./build.ps1 -clean",
           "qpm qmod manifest",
           "pwsh ./createqmod.ps1 CustomTypes -clean"
+        ],
+        "test": [
+          "pwsh ./build.ps1 -local_test"
         ]
       },
       "qmodIncludeDirs": [
