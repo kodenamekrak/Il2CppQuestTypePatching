@@ -175,9 +175,6 @@ MAKE_HOOK(GetScriptingClass, nullptr, Il2CppClass*, void* thisptr, char* assembl
 }
 
 #ifdef CT_USE_GCDESCRIPTOR_DEBUG
-#ifndef UNITY_2019
-#warning "Hey, this probably only works for 2019 unity, so be careful."
-#endif
 
 #ifdef LOCAL_TEST
 #warning "Hey, you shouldn't use LOCAL_TEST while building with CT_USE_GCDESCRIPTOR_DEBUG!"
