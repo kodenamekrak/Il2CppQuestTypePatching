@@ -608,7 +608,9 @@ void Register::EnsureHooks() {
         INSTALL_HOOK_DIRECT(logger, GlobalMetadata_GetTypeInfoFromHandle, (void*)il2cpp_functions::il2cpp_GlobalMetadata_GetTypeInfoFromHandle);
         INSTALL_HOOK_DIRECT(logger, GlobalMetadata_GetTypeInfoFromTypeDefinitionIndex, (void*)il2cpp_functions::il2cpp_GlobalMetadata_GetTypeInfoFromTypeDefinitionIndex);
         INSTALL_HOOK_DIRECT(logger, Class_Init, (void*)il2cpp_functions::il2cpp_Class_Init);
-        uintptr_t GetScriptingClassAddr = findPattern(baseAddr("libunity.so"), "ff 43 02 d1 fe 23 00 f9 fa 67 05 a9 f8 5f 06 a9 f6 57 07 a9 f4 4f 08 a9 57 d0 3b d5 e8 16 40 f9 f6 03 01 aa");
+
+        const uintptr_t kGetScriptingClassOffset = 0xa66928;
+        uintptr_t GetScriptingClassAddr = baseAddr("libunity.so") + kGetScriptingClassOffset;
         INSTALL_HOOK_DIRECT(logger, GetScriptingClass, reinterpret_cast<void*>(GetScriptingClassAddr));
 
         // get the location of Type::GetClassOrElementClass
