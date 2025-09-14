@@ -16,6 +16,10 @@
 
 #endif
 
+bool disableLivenessChecks() {
+    return std::getenv("CT_DISABLE_LIVENESS_CHECKS") != nullptr || std::getenv("ANDROID_EMULATOR") != nullptr;
+}
+
 // checks whether the ty->data could be a pointer. technically could be UB if the address is low enough
 bool MetadataHandleSet(const Il2CppType* ty) {
     return ((uint64_t)ty->data.typeHandle >> 32);
@@ -248,6 +252,10 @@ std::size_t generic_obj_traverse_count = 0;
 std::size_t obj_traverse_count = 0;
 
 MAKE_HOOK(LivenessState_TraverseGenericObject, nullptr, void, Il2CppObject* obj, void* state) {
+    if (disableLivenessChecks()) {
+        // If we are disabling liveness checks, do not call the original function.
+        return LivenessState_TraverseGenericObject(obj, state);
+    }
     // We are calling this with an object and a state.
     // The state is the LivenessState instance
     // There is a process_array that we want to look at
@@ -285,6 +293,10 @@ MAKE_HOOK(LivenessState_TraverseGenericObject, nullptr, void, Il2CppObject* obj,
 }
 
 MAKE_HOOK(LivenessState_TraverseObjectInternal, nullptr, bool, Il2CppObject* obj, bool isStruct, Il2CppClass* klass, void* state) {
+    if (disableLivenessChecks()) {
+        // If we are disabling liveness checks, do not call the original function.
+        return LivenessState_TraverseObjectInternal(obj, isStruct, klass, state);
+    }
     // Here we are going to log... AGAIN
     // but this time only a few things
     // custom_types::logger.debug("LivenessState::TraverseObjectInternal({},
@@ -318,6 +330,10 @@ static inline bool HasParentUnsafe(const Il2CppClass* klass, const Il2CppClass* 
 }
 
 MAKE_HOOK(LivenessState_TraverseGCDescriptor, nullptr, void, Il2CppObject* obj, void* state) {
+    if (disableLivenessChecks()) {
+        return LivenessState_TraverseGCDescriptor(obj, state);
+    }
+
     // Note: gc_desc is a bitfield that holds which fields of the type has
     // references, or, if it is too large, a pointer to a table which holds a
     // larger bitfield.
