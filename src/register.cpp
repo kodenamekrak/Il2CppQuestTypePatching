@@ -16,10 +16,6 @@
 
 #endif
 
-#include "liveness.h"
-
-CUSTOM_TYPES_EXPORT extern "C" bool custom_types_liveness_check = false;
-
 // checks whether the ty->data could be a pointer. technically could be UB if the address is low enough
 bool MetadataHandleSet(const Il2CppType* ty) {
     return ((uint64_t)ty->data.typeHandle >> 32);
@@ -252,10 +248,6 @@ std::size_t generic_obj_traverse_count = 0;
 std::size_t obj_traverse_count = 0;
 
 MAKE_HOOK(LivenessState_TraverseGenericObject, nullptr, void, Il2CppObject* obj, void* state) {
-    if (!custom_types_liveness_check) {
-        LivenessState_TraverseGenericObject(obj, state);
-        return;
-    }
     // We are calling this with an object and a state.
     // The state is the LivenessState instance
     // There is a process_array that we want to look at
@@ -293,9 +285,6 @@ MAKE_HOOK(LivenessState_TraverseGenericObject, nullptr, void, Il2CppObject* obj,
 }
 
 MAKE_HOOK(LivenessState_TraverseObjectInternal, nullptr, bool, Il2CppObject* obj, bool isStruct, Il2CppClass* klass, void* state) {
-    if (!custom_types_liveness_check) {
-        return LivenessState_TraverseObjectInternal(obj, isStruct, klass, state);
-    }
     // Here we are going to log... AGAIN
     // but this time only a few things
     // custom_types::logger.debug("LivenessState::TraverseObjectInternal({},
@@ -329,10 +318,6 @@ static inline bool HasParentUnsafe(const Il2CppClass* klass, const Il2CppClass* 
 }
 
 MAKE_HOOK(LivenessState_TraverseGCDescriptor, nullptr, void, Il2CppObject* obj, void* state) {
-    if (!custom_types_liveness_check) {
-        LivenessState_TraverseGCDescriptor(obj, state);
-        return;
-    }
     // Note: gc_desc is a bitfield that holds which fields of the type has
     // references, or, if it is too large, a pointer to a table which holds a
     // larger bitfield.
@@ -669,7 +654,6 @@ void Register::EnsureHooks() {
             opt = cs::findNthBSafe<2>(*opt);
             BREAK(opt, "Failed to find 2nd b in LivenessState::TraverseGenericObject!");
             BREAK(traverseInternal, "Failed to find 3rd b in LivenessState::TraverseGenericObject!");
-
             // We found all of the chain, lets install our debug hook!
             INSTALL_HOOK_DIRECT(logger, LivenessState_TraverseGenericObject, traverseGeneric);
             INSTALL_HOOK_DIRECT(logger, LivenessState_TraverseGCDescriptor, *opt);
