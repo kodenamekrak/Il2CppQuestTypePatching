@@ -210,7 +210,7 @@ MAKE_HOOK_FIND_CLASS_UNSAFE_INSTANCE(MainMenuViewController_DidActivate, "", "Ma
     logger.debug("MainMenuViewController.DidActivate!");
     MainMenuViewController_DidActivate(self, firstActivation, addedToHierarchy, screenSystemEnabling);
     logger.debug("Getting GO...");
-    auto* go = RET_V_UNLESS(logger, il2cpp_utils::GetPropertyValue(self, "gameObject").value_or(nullptr));
+    auto* go = RET_V_UNLESS(logger, il2cpp_utils::GetPropertyValue(self, "gameObject").into_optional_result().value_or(nullptr));
     logger.debug("Got GO: {}", fmt::ptr(go));
     custom_types::logAll(classof(Il2CppNamespace::MyType*));
     custom_types::logAll(classof(Il2CppNamespace::MyType*)->parent);
@@ -218,7 +218,7 @@ MAKE_HOOK_FIND_CLASS_UNSAFE_INSTANCE(MainMenuViewController_DidActivate, "", "Ma
     logger.debug("Custom System.Type: {}", fmt::ptr(customType));
     auto strType = RET_V_UNLESS(logger, il2cpp_utils::RunMethodOpt<StringW>(customType, "ToString"));
     logger.debug("ToString: {}", strType);
-    auto name = RET_V_UNLESS(logger, il2cpp_utils::GetPropertyValue<StringW>(customType, "Name"));
+    auto name = RET_V_UNLESS(logger, il2cpp_utils::GetPropertyValue<StringW>(customType, "Name").into_optional_result());
     logger.debug("Name: {}", name);
     logger.debug("Actual type: {}", fmt::ptr(&custom_types::Register::classes[0]->byval_arg));
     logger.debug("Type: {}", fmt::ptr(customType->type));
@@ -256,7 +256,7 @@ MAKE_HOOK_FIND_CLASS_UNSAFE_INSTANCE(BeatmapLevelModels_UpdateAllLoadedBeatmapLe
     BeatmapLevelModels_UpdateAllLoadedBeatmapLevelPacks(self);
     auto* existing = CRASH_UNLESS(il2cpp_utils::GetFieldValue(self, "_allLoadedBeatmapLevelPackCollection"));
     logger.debug("Existing: {}", fmt::ptr(existing));
-    auto* arr = CRASH_UNLESS(il2cpp_utils::GetPropertyValue(existing, "beatmapLevelPacks"));
+    auto* arr = CRASH_UNLESS(il2cpp_utils::GetPropertyValue(existing, "beatmapLevelPacks").into_optional_result());
     logger.debug("Existing arr: {}", fmt::ptr(arr));
     logger.debug("Constructing custom type and setting it to field!");
     // auto* myType = CRASH_UNLESS(il2cpp_utils::New<Il2CppNamespace::MyCustomBeatmapLevelPackCollection*>(arr));
