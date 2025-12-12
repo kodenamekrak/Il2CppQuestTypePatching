@@ -120,13 +120,13 @@
     {
       "dependency": {
         "id": "beatsaber-hook",
-        "versionRange": "=7.3.0",
+        "versionRange": "=7.4.1",
         "additionalData": {
-          "soLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v7.3.0/libbeatsaber-hook.so",
-          "debugSoLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v7.3.0/debug_libbeatsaber-hook.so",
+          "soLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v7.4.1/libbeatsaber-hook.so",
+          "debugSoLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v7.4.1/debug_libbeatsaber-hook.so",
           "overrideSoName": "libbeatsaber-hook.so",
-          "modLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v7.3.0/beatsaber-hook.qmod",
-          "branchName": "version/v7_3_0",
+          "modLink": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v7.4.1/beatsaber-hook.qmod",
+          "branchName": "version/v7_4_1",
           "compileOptions": {
             "cppFlags": [
               "-Wno-extra-qualification"
@@ -135,7 +135,7 @@
           "cmake": true
         }
       },
-      "version": "7.3.0"
+      "version": "7.4.1"
     },
     {
       "dependency": {
